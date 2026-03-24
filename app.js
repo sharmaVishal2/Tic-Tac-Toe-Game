@@ -23,6 +23,7 @@ const resetGame = () => {
   turnO = true;
   count = 0;
   enableBoxes();
+  document.body.classList.remove("game-over");
   msgContainer.classList.remove("draw");
   msgContainer.classList.add("hide");
 };
@@ -52,8 +53,9 @@ boxes.forEach((box) => {
 });
 
 const gameDraw = () => {
-  msg.innerText = `It's a Draw! 🤝`;
+  msg.innerText = "It's a Draw!";
   subMsg.innerText = "No one wins this time. Play again?";
+  document.body.classList.add("game-over");
   msgContainer.classList.add("draw");
   msgContainer.classList.remove("hide");
   disableBoxes();
@@ -74,8 +76,9 @@ const enableBoxes = () => {
 };
 
 const showWinner = (winner) => {
-  msg.innerText = `🎉 Winner is ${winner}!`;
+  msg.innerText = `Winner is ${winner}!`;
   subMsg.innerText = "Congratulations! Start a new game?";
+  document.body.classList.add("game-over");
   msgContainer.classList.remove("hide");
   disableBoxes();
 };

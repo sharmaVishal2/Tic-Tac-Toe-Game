@@ -8,6 +8,10 @@ body {
   text-align: center;
 }
 
+main {
+  min-height: 100vh;
+}
+
 .container {
   height: 70vh;
   display: flex;
@@ -61,42 +65,52 @@ body {
 }
 
 #new-btn {
-  padding: 1rem;
-  font-size: 1.25rem;
+  padding: 0.9rem 1.8rem;
+  font-size: 1.15rem;
   background-color: #191913;
   color: #fff;
   border-radius: 1rem;
   border: none;
+  cursor: pointer;
 }
 
 #msg {
   color: #ffffc7;
-  font-size: 5vmin;
+  font-size: clamp(2rem, 6vw, 4rem);
   font-weight: bold;
 }
 
 #sub-msg {
   color: #e0e0c0;
-  font-size: 2.5vmin;
-  margin-top: -2rem;
+  font-size: clamp(1rem, 2.5vw, 1.4rem);
 }
 
 .msg-container {
-  height: 100vmin;
+  min-height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
-  flex-direction: column;
-  gap: 4rem;
-  background-color: rgba(0, 0, 0, 0.15);
+  background: linear-gradient(160deg, #1f2937 0%, #111827 100%);
   position: fixed;
+  inset: 0;
   width: 100%;
-  top: 0;
-  left: 0;
+  z-index: 999;
+}
+
+.msg-card {
+  width: min(90vw, 560px);
+  padding: 2.5rem 2rem;
+  border-radius: 1.2rem;
+  background-color: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
 }
 
 .msg-container.draw {
-  background-color: rgba(80, 60, 0, 0.5);
+  background: linear-gradient(160deg, #5a3d12 0%, #3a250a 100%);
 }
 
 .msg-container.draw #msg {
@@ -108,5 +122,9 @@ body {
 }
 
 .hide {
+  display: none;
+}
+
+body.game-over main {
   display: none;
 }
