@@ -3,6 +3,7 @@ let resetBtn = document.querySelector("#reset-btn");
 let newGameBtn = document.querySelector("#new-btn");
 let msgContainer = document.querySelector(".msg-container");
 let msg = document.querySelector("#msg");
+let subMsg = document.querySelector("#sub-msg");
 
 let turnO = true; //playerX, playerO
 let count = 0; //To Track Draw
@@ -22,6 +23,7 @@ const resetGame = () => {
   turnO = true;
   count = 0;
   enableBoxes();
+  msgContainer.classList.remove("draw");
   msgContainer.classList.add("hide");
 };
 
@@ -30,10 +32,12 @@ boxes.forEach((box) => {
     if (turnO) {
       //playerO
       box.innerText = "O";
+      box.classList.add("player-o");
       turnO = false;
     } else {
       //playerX
       box.innerText = "X";
+      box.classList.add("player-x");
       turnO = true;
     }
     box.disabled = true;
@@ -48,7 +52,9 @@ boxes.forEach((box) => {
 });
 
 const gameDraw = () => {
-  msg.innerText = `Game was a Draw.`;
+  msg.innerText = `It's a Draw! 🤝`;
+  subMsg.innerText = "No one wins this time. Play again?";
+  msgContainer.classList.add("draw");
   msgContainer.classList.remove("hide");
   disableBoxes();
 };
@@ -63,11 +69,13 @@ const enableBoxes = () => {
   for (let box of boxes) {
     box.disabled = false;
     box.innerText = "";
+    box.classList.remove("player-x", "player-o");
   }
 };
 
 const showWinner = (winner) => {
-  msg.innerText = `Congratulations, Winner is ${winner}`;
+  msg.innerText = `🎉 Winner is ${winner}!`;
+  subMsg.innerText = "Congratulations! Start a new game?";
   msgContainer.classList.remove("hide");
   disableBoxes();
 };

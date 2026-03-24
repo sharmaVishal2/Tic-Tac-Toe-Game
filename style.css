@@ -33,8 +33,22 @@ body {
   border: none;
   box-shadow: 0 0 1rem rgba(0, 0, 0, 0.3);
   font-size: 8vmin;
+  font-weight: bold;
   color: #b0413e;
   background-color: #ffffc7;
+  transition: color 0.2s, background-color 0.2s, box-shadow 0.2s;
+}
+
+.box.player-x {
+  color: #4f46e5;
+  background-color: #e0e7ff;
+  box-shadow: 0 0 1.2rem rgba(79, 70, 229, 0.5);
+}
+
+.box.player-o {
+  color: #e05c00;
+  background-color: #fff0e0;
+  box-shadow: 0 0 1.2rem rgba(224, 92, 0, 0.5);
 }
 
 #reset-btn {
@@ -58,6 +72,13 @@ body {
 #msg {
   color: #ffffc7;
   font-size: 5vmin;
+  font-weight: bold;
+}
+
+#sub-msg {
+  color: #e0e0c0;
+  font-size: 2.5vmin;
+  margin-top: -2rem;
 }
 
 .msg-container {
@@ -67,6 +88,23 @@ body {
   align-items: center;
   flex-direction: column;
   gap: 4rem;
+  background-color: rgba(0, 0, 0, 0.15);
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+}
+
+.msg-container.draw {
+  background-color: rgba(80, 60, 0, 0.5);
+}
+
+.msg-container.draw #msg {
+  color: #ffd966;
+}
+
+.msg-container.draw #sub-msg {
+  color: #ffe599;
 }
 
 .hide {
